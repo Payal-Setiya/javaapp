@@ -7,6 +7,11 @@
       def mvnHome =  tool name: 'Maven', type: 'maven'    
       sh "${mvnHome}/bin/mvn package"
    }
+    post {
+      success {
+                junit 'target/surefire-reports/**/*.xml' 
+              }
+      }
   }
    
 
