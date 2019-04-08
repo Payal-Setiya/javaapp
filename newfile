@@ -11,9 +11,9 @@ node{
    }
    
    stage('SonarQube Analysis') {
-        def mvnHome =  tool name: 'Maven', type: 'maven'
+        def scannerhome =  tool name: 'sonar_scanner', type: 'maven'
         withSonarQubeEnv('SonarQube') { 
-          sh "${mvnHome}/bin/mvn sonar:sonar"
+          sh "${scannerhome}/bin/sonar_scanner -D sonar.login=admin sonar.password=admin"
         }
     }
    stage('Deploy to Tomcat'){
