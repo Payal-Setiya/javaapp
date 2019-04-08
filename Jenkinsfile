@@ -4,7 +4,6 @@ node{
      git 'https://github.com/Payal-Setiya/javaapp.git'
    }
    stage('Compile-Package'){
-      // Get maven home path
       def mvnHome =  tool name: 'Maven', type: 'maven'   
       sh "${mvnHome}/bin/mvn package"
       junit 'target/surefire-reports/**/*.xml'
